@@ -135,7 +135,7 @@
         messages: [{ role: "system", content: P.system }].concat(P.examples, convo) })
     }).then(function (res) {
       if (!res.ok || !res.body) throw new Error("unavailable");
-      var reader = res.body.getReader(), dec = new TextDecoder(), buf = "";
+      var reader = res.body.getReader(), dec = new TextDecoder(), buf = "", lastDraw = 0;
       function pump() {
         return reader.read().then(function (r) {
           if (r.done) return;
@@ -151,7 +151,9 @@
               if (d && d.content) reply += d.content;      // ignore the model's hidden "reasoning"
             } catch (e) { /* partial line */ }
           }
-          if (reply) { box.className = "msg-host"; render(box, reply, true); }
+          // Redraw at most a few times a second, so long replies stay smooth on phones.
+          var now = Date.now();
+          if (reply && now - lastDraw > 250) { lastDraw = now; box.className = "msg-host"; render(box, reply, true); }
           return pump();
         });
       }
