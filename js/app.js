@@ -108,8 +108,16 @@
     circle.className = "breath-circle " + (ph.size === "big" ? "is-in" : "is-out") + (reducedMotion() ? " still" : "");
     circle.style.transitionDuration = ph.s + "s";
     text($("breath-cue"), ph.cue);
-    // Count up through each breath (1, 2, 3, 4), so the number reads as counting, not as a duration.
-    text($("breath-num"), String(ph.s - breath.second + 1));
+    // The whole count for this breath (1 2 3 4), lighting up one number per second.
+    var row = $("breath-num"), now = ph.s - breath.second + 1;
+    if (row.children.length !== ph.s || row.getAttribute("data-phase") !== String(breath.phase)) {
+      row.innerHTML = "";
+      row.setAttribute("data-phase", String(breath.phase));
+      for (var i = 1; i <= ph.s; i++) row.appendChild(el("span", null, String(i)));
+    }
+    Array.prototype.forEach.call(row.children, function (n, k) {
+      n.className = k + 1 < now ? "done" : (k + 1 === now ? "now" : "");
+    });
     text($("breath-count"), breath.cycle + " of " + breath.cycles);
   }
   function finishBreath() {
