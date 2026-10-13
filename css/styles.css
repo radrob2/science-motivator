@@ -116,3 +116,5 @@ h2 { font-size: clamp(2.1rem, 7vw, 2.8rem); text-align: center; }
 textarea { font-size: 1.15rem; } .link-btn { font-size: 1.05rem; }
 .story p { font-size: 1.12rem; } .actions { gap: 14px; }
 .fine { text-align: center; font-size: .68rem; color: #b3a9bd; padding: 30px 16px 18px; }
+.room-alt { text-align: center; margin: 18px 0 0; font-weight: 700; }
+.room-alt a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--lilac); text-decoration-thickness: 3px; text-underline-offset: 4px; }
