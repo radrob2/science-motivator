@@ -128,13 +128,15 @@ textarea { font-size: 1.15rem; } .link-btn { font-size: 1.05rem; }
 .weather-grid button[aria-pressed="true"] { background: var(--lilac); box-shadow: 3px 4px 0 var(--line); }
 #weather-words { margin-bottom: 14px; }
 
-/* Breathing bubble: drawn at its largest size and only ever scaled down, on its own GPU layer.
-   Scaling a gradient circle up made the browser show seam lines (a cross) mid-animation. */
+/* Breathing bubble: the original look, but it grows by changing its real size instead of being
+   scaled as an image. Scaling made some browsers flash seam lines (a cross) across it. */
+.breath-stage { height: min(355px, 80vw); display: flex; align-items: center; justify-content: center; margin: 16px 0; }
 .breath-circle {
-  width: min(345px, 80vw); height: min(345px, 80vw); margin: 20px auto;
-  background: var(--sky); box-shadow: inset -18px -22px 0 rgba(255, 255, 255, .45);
-  transform: scale(.74); will-change: transform; backface-visibility: hidden;
+  width: min(255px, 58vw); height: min(255px, 58vw); margin: 0; flex: none;
+  border: 4px solid var(--line); background: radial-gradient(circle at 35% 30%, #fff, var(--sky));
+  transform: none !important; transition: width 4s ease-in-out, height 4s ease-in-out;
 }
-.breath-circle.is-in { transform: scale(1); }
-.breath-circle.is-out { transform: scale(.61); }
-.breath-circle.still { transform: scale(.8); }
+.breath-circle.is-in { width: min(345px, 78vw); height: min(345px, 78vw); }
+.breath-circle.is-out { width: min(210px, 47vw); height: min(210px, 47vw); }
+.breath-circle.still { transition: none; width: min(255px, 58vw); height: min(255px, 58vw); }
+@media (prefers-reduced-motion: reduce) { .breath-circle, .breath-circle.is-in, .breath-circle.is-out { transition: none !important; width: min(255px, 58vw); height: min(255px, 58vw); } }
