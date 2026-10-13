@@ -107,7 +107,9 @@
     var circle = $("breath-circle");
     circle.className = "breath-circle " + (ph.size === "big" ? "is-in" : "is-out") + (reducedMotion() ? " still" : "");
     circle.style.transitionDuration = ph.s + "s";
-    text($("breath-cue"), ph.cue + " … " + breath.second);
+    text($("breath-cue"), ph.cue);
+    // Count up through each breath (1, 2, 3, 4), so the number reads as counting, not as a duration.
+    text($("breath-num"), String(ph.s - breath.second + 1));
     text($("breath-count"), breath.cycle + " of " + breath.cycles);
   }
   function finishBreath() {
@@ -119,6 +121,7 @@
   function stopBreath() {
     if (breath.timer) clearInterval(breath.timer);
     breath.timer = null;
+    text($("breath-num"), "");
     $("breath-circle").className = "breath-circle";
     $("breath-start").hidden = false;
     $("breath-stop").hidden = true;
