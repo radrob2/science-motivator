@@ -127,3 +127,14 @@ textarea { font-size: 1.15rem; } .link-btn { font-size: 1.05rem; }
 .weather-grid button span { display: block; font-size: 1.9rem; line-height: 1.2; }
 .weather-grid button[aria-pressed="true"] { background: var(--lilac); box-shadow: 3px 4px 0 var(--line); }
 #weather-words { margin-bottom: 14px; }
+
+/* Breathing bubble: drawn at its largest size and only ever scaled down, on its own GPU layer.
+   Scaling a gradient circle up made the browser show seam lines (a cross) mid-animation. */
+.breath-circle {
+  width: min(345px, 80vw); height: min(345px, 80vw); margin: 20px auto;
+  background: var(--sky); box-shadow: inset -18px -22px 0 rgba(255, 255, 255, .45);
+  transform: scale(.74); will-change: transform; backface-visibility: hidden;
+}
+.breath-circle.is-in { transform: scale(1); }
+.breath-circle.is-out { transform: scale(.61); }
+.breath-circle.still { transform: scale(.8); }
