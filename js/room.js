@@ -3,10 +3,10 @@
   "use strict";
   var A = window.App, el = A.el;
   function $(id) { return document.getElementById(id); }
-  var KEY = "sm.room.v3";
+  var KEY = "sm.room.v4";
+  var CHATGPT = "https://chatgpt.com/?q=Be%20the%20host%20of%20the%20PhD%20Weather%20Room%3A%20a%20small%2C%20cozy%2C%20slightly%20magical%20refuge%20for%20a%20PhD%20student%20who%20feels%20stuck%2C%20tired%2C%20or%20is%20just%20having%20an%20ordinary%20day.%20Not%20therapy%20or%20coaching%3A%20no%20lessons%2C%20no%20morals%2C%20no%20productivity%20talk%2C%20no%20advice%20unless%20I%20ask.%20Rest%20doesn%27t%20have%20to%20be%20earned%2C%20and%20coming%20back%20is%20enough.%0A%0AHow%20it%20works%3A%20I%20give%20my%20inner%20weather%20%28an%20emoji%2C%20colour%2C%20word%20or%20a%20few%20sentences%29.%20Meet%20me%20there%20in%20a%20few%20gentle%2C%20specific%20lines%2C%20without%20analysing%20me%20or%20cheering%20me%20up.%20If%20I%20want%20to%20talk%2C%20just%20listen.%20Otherwise%20let%20something%20small%20and%20strange%20happen%20in%20the%20room%20%28a%20messenger%20at%20the%20window%2C%20a%20letter%20from%20the%20Department%20of%20Unimportant%20Wonders%2C%20an%20object%20left%20behind%29%2C%20then%20offer%203%20mysterious%20choices%20with%20small%20pictures.%20I%20pick%2C%20but%20I%20don%27t%20know%20what%27s%20inside%3A%20a%20tiny%20story%2C%20a%20strange%20true%20fact%20from%20nature%2C%20a%20gentle%205%20to%2010%20minute%20offline%20mission%2C%20harmless%20magic%2C%20or%20a%20quiet%20moment.%20Reveal%20each%20as%20a%20short%20scene%20with%20a%20twist%2C%20then%203%20new%20choices.%0A%0AStyle%3A%20cozy%20storybook%2C%20very%20short%20paragraphs%2C%20second%20person%2C%20present%20tense%2C%20deadpan%20humour%2C%20a%20sleepy%20orange%20cat%20who%20says%20wise%20things%20it%20has%20clearly%20been%20saving%2C%20pictures%20and%20little%20visual%20touches%20like%20tickets%20and%20notes.%0A%0AStart%20now%3A%20welcome%20me%20back%20in%20two%20lines%2C%20describe%20one%20odd%20change%20in%20the%20room%2C%20show%20a%20picture%2C%20then%20ask%20what%20the%20weather%20inside%20me%20is%20right%20now%2C%20with%20clickable%20options%20%28sunny%2C%20clearing%2C%20cloudy%2C%20foggy%2C%20rainy%2C%20thunder%2C%20chaotic%2C%20low%20energy%2C%20unclear%29%20and%20a%20place%20to%20type%20instead.";
   var API = "https://text.pollinations.ai/openai";
-  var CHATGPT = "https://chatgpt.com/?q=Be%20the%20host%20of%20the%20PhD%20Weather%20Room%3A%20a%20tiny%2C%20cozy%2C%20slightly%20magical%20refuge%20for%20a%20tired%20PhD%20student.%20It%20is%20not%20therapy%20or%20productivity%20coaching%3A%20no%20lessons%2C%20no%20symbolism%2C%20no%20advice%20unless%20I%20ask.%0A%0AStyle%3A%20short%20and%20light%2C%20like%20a%20cozy%20storybook.%20Very%20short%20paragraphs%2C%20second%20person%2C%20present%20tense.%20A%20few%20sensory%20details%2C%20deadpan%20little%20jokes%2C%20whimsical%20characters%20%28a%20sleepy%20orange%20cat%2C%20a%20white%20rabbit%20in%20a%20blue%20waistcoat%20who%20runs%20a%20brass%20lift%2C%20an%20elderly%20badger%2C%20moths%20that%20deliver%20letters%29%2C%20handwritten%20notes%20and%20signs.%20Each%20reply%20about%2080%20to%20150%20words.%20Show%20small%20storybook%20pictures.%0A%0AStart%20a%20fresh%20session%20now%3A%20welcome%20me%20in%20one%20or%20two%20lines%2C%20let%20one%20small%20strange%20thing%20happen%2C%20then%20offer%203%20new%20places%20to%20visit%2C%20each%20with%20a%20small%20picture%2C%20a%20bold%20emoji%20title%20and%20one%20teasing%20line.%20End%20with%20one%20tiny%20absurd%20line%20from%20a%20character.%0A%0AWhen%20I%20pick%20a%20place%3A%20a%20short%20scene%20with%20a%20picture%2C%20one%20surprise%2C%20and%203%20emoji%20choices.%20Invent%20new%20places%20every%20time.%20If%20I%20share%20my%20inner%20weather%20or%20something%20heavy%2C%20acknowledge%20it%20gently%20in%20a%20line%20or%20two%20and%20let%20it%20colour%20the%20scene.%20If%20I%20say%20start%20again%2C%20open%20somewhere%20new.";
-  var messages = [];          // { role: "host" | "visitor", text, hidden }
+  var messages = [];          // { role: "host" | "visitor", text, show }
   var busy = false;
   var images = {};            // description -> <img>, so pictures survive re-rendering
   try { messages = JSON.parse(A.store.get(KEY) || "[]"); } catch (e) { messages = []; }
@@ -97,7 +97,9 @@
       b.appendChild(el("span", "emo", c.emo));
       b.appendChild(el("b", null, c.title));
       if (c.desc) b.appendChild(el("span", "d", c.desc));
-      b.addEventListener("click", function () { say(c.emo + " " + c.title); });
+      b.addEventListener("click", function () {
+        say("In the PhD Weather Room, I choose: " + c.emo + " " + c.title + ". Reveal it gently, with a small surprise.", c.emo + " " + c.title);
+      });
       box.appendChild(b);
     });
   }
@@ -106,9 +108,8 @@
     log.innerHTML = "";
     var lastChoices = [];
     messages.forEach(function (m) {
-      if (m.hidden) return;
       if (m.role === "host") { var d = el("div", "msg-host"); lastChoices = render(d, m.text, false); log.appendChild(d); }
-      else { lastChoices = []; log.appendChild(el("div", "msg-me", m.text)); }
+      else { lastChoices = []; log.appendChild(el("div", "msg-me", m.show || m.text)); }
     });
     showChoices(lastChoices);
   }
@@ -126,15 +127,16 @@
     p.appendChild(a); box.appendChild(p);
   }
 
-  function say(textValue, hidden) {
+  /** Sends `textValue` to the storyteller; the visitor's bubble shows `shown` instead, if given. */
+  function say(textValue, shown) {
     if (busy) return;
-    messages.push({ role: "visitor", text: textValue, hidden: !!hidden });
+    messages.push({ role: "visitor", text: textValue, show: shown || null });
     drawAll();
     $("room-choices").innerHTML = "";
     var log = $("room-log");
     var box = el("div", "waiting", "The room is rearranging itself… ☁️");
     log.appendChild(box);
-    if (!hidden) box.scrollIntoView({ behavior: "smooth", block: "end" });
+    box.scrollIntoView({ behavior: "smooth", block: "end" });
     setBusy(true);
     var reply = "";
     // A free, keyless AI service, called straight from the browser so the site needs no server.
@@ -191,16 +193,69 @@
     var t = $("room-text").value.trim();
     if (!t || busy) return;
     $("room-text").value = "";
+    if (/^\s*start (again|over)\W*$/i.test(t)) { restart(); return; }
     say(t);
   });
-  $("room-restart").addEventListener("click", function () {
+
+  // ---------- the opening: pick your inner weather (no waiting, nothing sent yet) ----------
+  var WEATHERS = [["☀️", "Sunny"], ["🌤️", "Clearing"], ["☁️", "Cloudy"], ["🌫️", "Foggy"], ["🌧️", "Rainy"],
+    ["⛈️", "Thunder"], ["🌪️", "Chaotic"], ["🌙", "Low energy"], ["🎭", "Unclear"]];
+  var WELCOMES = [
+    "The room has been quietly rearranged while you were away. The orange cat is missing. On the table there's a paper crane, a brass key, and a bowl containing one perfectly ordinary-looking potato. Nobody has explained the potato.",
+    "The orange cat has saved your seat by the window. The little golden key is back on the table, and somewhere in the room, a tiny bell rings by itself.",
+    "Someone has left the kettle on, very slightly. A moth in a waistcoat is reading the newspaper upside down and pretending not to notice you.",
+    "The rain has stopped, but the window is covered in tiny glowing fingerprints. The orange cat insists it has no idea whose they are."
+  ];
+  var weather = "🌫️";
+  function drawWeathers() {
+    var g = $("weather-grid");
+    g.innerHTML = "";
+    WEATHERS.forEach(function (w) {
+      var b = el("button");
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(w[0] === weather));
+      b.appendChild(el("span", null, w[0]));
+      b.appendChild(document.createTextNode(w[1]));
+      b.addEventListener("click", function () { weather = w[0]; drawWeathers(); });
+      g.appendChild(b);
+    });
+  }
+  function showPicker() {
+    $("room-weather").hidden = false;
+    $("room-form").hidden = true;
+    $("room-log").innerHTML = "";
+    $("room-choices").innerHTML = "";
+    text($("room-welcome"), WELCOMES[Math.floor(Math.random() * WELCOMES.length)]);
+    var pic = $("room-welcome-pic");
+    if (!pic.src) {
+      pic.onerror = function () { pic.hidden = true; };
+      pic.src = imageUrl("cozy attic room at twilight, rain-speckled window, small wooden table with a paper crane, a brass key and a potato in a ceramic bowl, warm lamplight", 768, 432);
+    }
+    $("weather-words").value = "";
+    drawWeathers();
+  }
+  function text(node, t) { node.textContent = t; }
+  function restart() {
     if (busy) return;
     messages = []; save();
-    say("start again", true);
+    showPicker();
+    window.scrollTo(0, 0);
+  }
+  $("weather-go").addEventListener("click", function () {
+    if (busy) return;
+    var words = $("weather-words").value.trim();
+    $("room-weather").hidden = true;
+    $("room-form").hidden = false;
+    say("Start a fresh PhD Weather Room session. My current inner weather is " + weather + ". " +
+      (words ? "What I'd like to share: " + words : "Please acknowledge gently and offer a small unexpected experience."),
+      weather + (words ? " " + words : ""));
   });
+  $("room-restart").addEventListener("click", restart);
   A.onShow.room = function () {
     if (busy) return;
-    if (messages.length) { drawAll(); var l = $("room-log").lastChild; if (l) l.scrollIntoView({ block: "start" }); }
-    else say("start again", true);
+    if (messages.length) {
+      $("room-weather").hidden = true; $("room-form").hidden = false;
+      drawAll(); var l = $("room-log").lastChild; if (l) l.scrollIntoView({ block: "start" });
+    } else showPicker();
   };
 })();

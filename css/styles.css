@@ -119,3 +119,11 @@ textarea { font-size: 1.15rem; } .link-btn { font-size: 1.05rem; }
 .room-alt { text-align: center; margin: 18px 0 0; font-weight: 700; }
 .room-alt a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--lilac); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .choice img.thumb { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 2px solid var(--line); margin-bottom: 8px; background: linear-gradient(120deg, var(--lilac), var(--sky)); }
+.room-weather { text-align: center; }
+.room-weather h2 { font-size: 1.5rem; }
+.room-weather img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 16px; border: 2px solid var(--line); background: linear-gradient(120deg, var(--lilac), var(--sky)); margin: 1em 0; }
+.weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0 12px; }
+.weather-grid button { border: 2.5px solid var(--line); background: #fff; border-radius: 16px; padding: 10px 4px; font: 700 .9rem var(--body); color: var(--ink); cursor: pointer; }
+.weather-grid button span { display: block; font-size: 1.9rem; line-height: 1.2; }
+.weather-grid button[aria-pressed="true"] { background: var(--lilac); box-shadow: 3px 4px 0 var(--line); }
+#weather-words { margin-bottom: 14px; }
