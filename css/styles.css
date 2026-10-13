@@ -118,3 +118,4 @@ textarea { font-size: 1.15rem; } .link-btn { font-size: 1.05rem; }
 .fine { text-align: center; font-size: .68rem; color: #b3a9bd; padding: 30px 16px 18px; }
 .room-alt { text-align: center; margin: 18px 0 0; font-weight: 700; }
 .room-alt a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--lilac); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.choice img.thumb { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 2px solid var(--line); margin-bottom: 8px; background: linear-gradient(120deg, var(--lilac), var(--sky)); }
