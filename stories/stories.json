@@ -3286,8 +3286,8 @@
    "slow-progress"
   ],
   "setback": "The first half of Brittany Trang's chemistry PhD at Northwestern University was a run of disappointing or inexplicable results. By her own count, her dissertation held two years of work with inconsistent results and eight failed projects. A method she developed worked until it did not.",
-  "after": "A later project on a possible way to destroy PFAS chemicals was published in Science in 2022, the year she earned her PhD. When she wrote the essay she was a science reporting fellow at STAT News.",
-  "reflection": "She kept a thick stack of notes from the years when nothing worked. Those years were still part of her training, even though no paper shows them.",
+  "after": "A later project, on a possible way to destroy PFAS chemicals, was published in Science a few months before she wrote the essay. She earned her PhD in 2022 and was then a science reporting fellow at STAT News.",
+  "reflection": "When she cleared out her lab bench she found a thick stack of notes from everything that had not worked, and could not bring herself to throw it out. Those years were still part of her training, even though no paper shows them.",
   "sources": [
    {
     "label": "STEM graduate programs should embrace failure",
@@ -3297,7 +3297,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "erickson",
@@ -3322,7 +3322,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "vinal",
@@ -3337,7 +3337,7 @@
   ],
   "setback": "In her second year, Kellie Vinal had a panic attack in the middle of her oral qualifying exam and could not recall even basic facts. The committee failed her and advised her to leave with a master's degree. She later heard that her adviser wanted her out of the lab.",
   "after": "She started therapy and learned she had generalized anxiety disorder and depression. Over the summer she met many professors and found one willing to take her on. She wrote a new proposal and passed her second qualifying exam.",
-  "reflection": "The exam measured one hour on one very bad day. With treatment and a different lab, the second attempt went differently.",
+  "reflection": "The exam measured one very bad day. With therapy and a different lab, the second attempt went differently.",
   "sources": [
    {
     "label": "Kellie Vinal: This Big, Significant Moment of Truth",
@@ -3347,13 +3347,13 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "murphy",
   "name": "Connacher Murphy",
   "field": "Economics",
-  "country": "unknown",
+  "country": "United States",
   "stage": "student",
   "outcome": "left-academia",
   "themes": [
@@ -3372,7 +3372,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "spichak",
@@ -3621,7 +3621,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "gamble",
@@ -3671,7 +3671,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "lawrence",
@@ -3739,7 +3739,7 @@
    "hardship",
    "failed-attempt"
   ],
-  "setback": "Two months into her PhD in New Orleans, Aditi Iyengar's father died and she thought about staying home in India. In her third year she started a project from scratch, and after three months nothing was working. In her fourth year she spent months cleaning up a previous lab member's mistake, afraid her data were wrong.",
+  "setback": "Two months into her PhD in New Orleans, Aditi Iyengar's father died and she thought about staying home in India. In her third year she started a project from scratch, and after three months nothing was working. In her fourth year she spent months cleaning up a previous student's mistake, afraid her data were wrong.",
   "after": "Her mother urged her to finish, and she returned to school two weeks after the funeral. She wrote the essay in the final year of her PhD. Her author note says she went on to postdoctoral research at Massachusetts General Hospital.",
   "reflection": "Her mentor told her that most of the next few years would be failure. She was in tears in his office at the time.",
   "sources": [
@@ -3751,7 +3751,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "banerjee",
@@ -4261,22 +4261,22 @@
   ],
   "singleSource": false,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "houlton",
   "name": "Benjamin Z. Houlton",
   "field": "Ecology",
-  "country": "unknown",
+  "country": "United States",
   "stage": "student",
   "outcome": "continued",
   "themes": [
    "slow-progress",
    "self-doubt"
   ],
-  "setback": "In the second year of his PhD his committee asked him to build a mathematical model of the global nitrogen cycle, something he had never done from scratch. For two months the model crashed or gave the same result whatever he changed. He began to fear it would derail his dissertation and that his committee would judge him.",
-  "after": "He asked a fellow graduate student with stronger coding skills for help. Together they found a single missing full stop in the code. With that fixed the model worked and the dissertation moved forward. He is now a dean at Cornell University.",
-  "reflection": "Two months lost to one missing character. The fear he describes was real even though the cause turned out to be small.",
+  "setback": "In the second year of his PhD his committee asked him to build a mathematical model of how climate shapes the nitrogen cycle around the planet. He had never built a model from scratch. The model crashed, giving the same result whatever he changed, and two months went by with no progress. He began to fear it would derail his dissertation and that his committee would judge him.",
+  "after": "He asked a fellow graduate student with stronger coding skills for help. Together they found that the code was missing a full stop. Once he put full stops in the right places, the model worked and his dissertation moved forward. When the profile appeared he was a dean at Cornell University.",
+  "reflection": "Two months lost to a missing full stop. The fear he describes was real even though the cause turned out to be small.",
   "sources": [
    {
     "label": "Faculty Who Failed Series: Benjamin Z. Houlton",
@@ -4286,7 +4286,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "moreau",
@@ -4298,8 +4298,8 @@
   "themes": [
    "hardship"
   ],
-  "setback": "During her doctorate at Harvard her family was in crisis. Her mother was not well and her brother had been seriously injured, and she often had to fly home at short notice. For the first two or three years she told no one, fearing that advisors and peers would think she was not committed to her research.",
-  "after": "When she finally told her advisors and peers, she felt a great weight lift. Most were supportive, and some then shared struggles of their own. She is now a professor of entomology and a senior associate dean at Cornell University.",
+  "setback": "During her doctorate at Harvard her family was in crisis. Her mother was not well and her brother had been seriously injured, and once or twice a year she had to fly home at short notice to help. For the first two or three years she told no one, fearing that advisors and peers would think she was not committed to her research.",
+  "after": "When she finally told her advisors and peers, she felt a great weight lift. Most were supportive, and some then shared struggles of their own. When the profile appeared she was a professor of entomology and a senior associate dean at Cornell University.",
   "reflection": "She carried it alone for years because she thought it would count against her. Hiding it was exhausting in itself.",
   "sources": [
    {
@@ -4310,7 +4310,7 @@
   ],
   "singleSource": true,
   "kind": "real",
-  "checked": "2026-10-09"
+  "checked": "2026-10-13"
  },
  {
   "id": "nakedi",
