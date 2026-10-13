@@ -1,0 +1,11 @@
+# Local-only tools and working files, not part of the public site
+server.js
+server.log
+scripts/
+room-prompt.md
+narrator-auditions.html
+stories/inbox/
+stories/held/
+stories/existing-names.txt
+._*
+.DS_Store

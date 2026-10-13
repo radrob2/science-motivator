@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You've got this</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<main id="main">
+
+  <section class="screen home" data-screen="home">
+    <div class="sprout" aria-hidden="true">🌱</div>
+    <h1>You're doing better than you think.</h1>
+    <div class="tiles">
+      <button class="tile t-breathe" data-go="breathe"><span class="emo">🫧</span>Breathe</button>
+      <button class="tile t-room" data-go="room"><span class="emo">🌦️</span>Weather Room</button>
+      <button class="tile t-write" data-go="writing"><span class="emo">✏️</span>Start writing</button>
+      <button class="tile t-stories" data-go="stories"><span class="emo">📖</span>True stories</button>
+    </div>
+  </section>
+
+  <!-- Breathing (kept from the first version) -->
+  <section class="screen" data-screen="breathe" hidden>
+    <button class="home-btn" data-go="home">← Home</button>
+    <h2>🫧 Just breathe</h2>
+    <div id="breath-box" class="breath-box">
+      <p class="hint">Follow the circle.</p>
+      <div class="breath-circle" id="breath-circle" aria-hidden="true"></div>
+      <p class="breath-cue" id="breath-cue" aria-live="polite"></p>
+      <p class="muted small" id="breath-count"></p>
+      <div class="actions center">
+        <button type="button" class="btn primary big" id="breath-start">Start</button>
+        <button type="button" class="btn big" id="breath-stop" hidden>Stop</button>
+        <button type="button" class="btn" id="breath-more" hidden>One more minute</button>
+      </div>
+      <div class="segmented small" role="radiogroup" aria-label="Breathing pattern" id="breath-pattern"></div>
+    </div>
+    <div id="ground-box" class="breath-box" hidden>
+      <p class="hint">Look around you.</p>
+      <p class="breath-cue" id="ground-step" aria-live="polite"></p>
+      <p class="muted small" id="ground-count"></p>
+      <div class="actions center">
+        <button type="button" class="btn primary big" id="ground-next">Next</button>
+      </div>
+    </div>
+    <div class="segmented small" role="radiogroup" aria-label="Exercise" id="pause-mode">
+      <button type="button" role="radio" aria-checked="true" data-mode="breath">Breathing</button>
+      <button type="button" role="radio" aria-checked="false" data-mode="ground">Grounding</button>
+    </div>
+    <p class="muted small center">Dizzy? Stop and breathe normally.</p>
+  </section>
+
+  <!-- Writing starter (kept from the first version) -->
+  <section class="screen" data-screen="writing" hidden>
+    <button class="home-btn" data-go="home">← Home</button>
+    <h2>✏️ Writing starter</h2>
+    <p class="hint">Tap one. Keep going.</p>
+    <div class="chips" id="writing-kind" role="radiogroup" aria-label="What are you writing?"></div>
+    <ul class="starters" id="writing-starters"></ul>
+    <button type="button" class="link-btn" id="writing-more">Show others</button>
+    <textarea id="writing-text" rows="8" maxlength="20000" placeholder="Write here." aria-label="Your text"></textarea>
+    <div class="actions">
+      <button type="button" class="btn primary" id="writing-timer">5-minute timer</button>
+      <button type="button" class="btn" id="writing-copy">Copy</button>
+      <button type="button" class="btn" id="writing-clear">Start over</button>
+      <span class="timer" id="writing-time" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <!-- True stories -->
+  <section class="screen" data-screen="stories" hidden>
+    <button class="home-btn" data-go="home">← Home</button>
+    <h2>📖 True stories</h2>
+    <p class="hint">Real people. Real setbacks.</p>
+    <div class="tiles one">
+      <button class="tile t-stories" data-pick="phd"><span class="emo">🎓</span>From the PhD years</button>
+      <button class="tile t-write" data-pick="later"><span class="emo">🔬</span>Later in a career</button>
+      <button class="tile t-breathe" data-pick="any"><span class="emo">🎲</span>Surprise me</button>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="story" hidden>
+    <button class="home-btn" data-go="home">← Home</button>
+    <article class="card story">
+      <p class="eyebrow" id="story-meta"></p>
+      <h2 id="story-name"></h2>
+      <h3>What happened</h3>
+      <p id="story-setback"></p>
+      <h3>What came next</h3>
+      <p id="story-after"></p>
+      <p class="thought" id="story-reflection"></p>
+      <details class="sources"><summary>True story · sources</summary><ul id="story-sources"></ul></details>
+    </article>
+    <div class="actions center">
+      <button type="button" class="btn primary big" id="story-listen" hidden>🔊 Listen</button>
+      <button type="button" class="btn primary big" id="story-next">Another one</button>
+      <button type="button" class="btn" data-go="stories">Change kind</button>
+    </div>
+  </section>
+
+  <!-- The PhD Weather Room -->
+  <section class="screen room" data-screen="room" hidden>
+    <div class="room-top">
+      <button class="home-btn" data-go="home">← Home</button>
+      <button class="home-btn" id="room-restart">Start again ↻</button>
+    </div>
+    <div id="room-log" class="room-log" aria-live="polite"></div>
+    <div id="room-choices" class="room-choices"></div>
+    <form id="room-form" class="room-form">
+      <input id="room-text" type="text" maxlength="2000" autocomplete="off" placeholder="Say anything, or name your weather…" aria-label="Say anything">
+      <button class="btn primary" type="submit" id="room-send">Send</button>
+    </form>
+  </section>
+
+</main>
+<footer class="fine">Story voices by ElevenLabs. Weather Room by an AI storyteller (Pollinations).</footer>
+<script src="js/app.js"></script>
+<script src="js/room-prompt.js"></script>
+<script src="js/room.js"></script>
+</body>
+</html>
